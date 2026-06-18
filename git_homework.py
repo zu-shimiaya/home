@@ -1,16 +1,17 @@
 import random
 
 print("=== 3桁の数字当てゲーム ===")
-print("これから数字当てゲームを作成します。")
+print("100から999までの数字を当ててください。")
+print("不正解の場合はヒントが表示されます。")
 
 answer = random.randint(100, 999)
 max_attempts = 7
 attempt = 1
 
-print("正解の数字を作成しました。")
 print("回答できる回数は", max_attempts, "回までです。")
 
 while attempt <= max_attempts:
+    print()
     guess_text = input(str(attempt) + "回目の回答：")
 
     if not guess_text.isdigit():
@@ -23,7 +24,7 @@ while attempt <= max_attempts:
         print("3桁の数字を入力してください。")
         continue
 
-    print("あなたの回答は", guess, "です。")
+    
 
     if guess == answer:
         print("正解です！")
@@ -51,14 +52,15 @@ while attempt <= max_attempts:
 
         match = common - hit
 
-        print("ヒット数：", hit)
-        print("一致数：", match)
+        print("数字も桁も一致している数：", hit)
+        print("数字は一致しているが桁が異なる数：", match)
 
         remaining = max_attempts - attempt
 
         if remaining > 0:
             print("残り", remaining, "回です。")
         else:
+            print()
             print("ゲームオーバーです。")
             print("正解は", answer, "でした。")
 
