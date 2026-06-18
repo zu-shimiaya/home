@@ -31,6 +31,23 @@ while attempt <= max_attempts:
     else:
         print("不正解です。")
 
+        answer_str = str(answer)
+        guess_str = str(guess)
+
+        hit = 0
+        for i in range(3):
+            if answer_str[i] == guess_str[i]:
+                hit += 1
+
+        common = 0
+        for number in set(guess_str):
+            common += min(answer_str.count(number), guess_str.count(number))
+
+        match = common - hit
+
+        print("ヒット数：", hit)
+        print("一致数：", match)
+
         remaining = max_attempts - attempt
 
         if remaining > 0:
