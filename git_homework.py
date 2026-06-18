@@ -27,9 +27,15 @@ while attempt <= max_attempts:
 
     if guess == answer:
         print("正解です！")
+        print(attempt, "回でクリアしました。")
         break
     else:
         print("不正解です。")
+
+        if guess < answer:
+            print("ヒント：正解はもっと大きい数字です。")
+        else:
+            print("ヒント：正解はもっと小さい数字です。")
 
         answer_str = str(answer)
         guess_str = str(guess)
