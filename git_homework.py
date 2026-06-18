@@ -5,11 +5,23 @@ print("これから数字当てゲームを作成します。")
 
 answer = random.randint(100, 999)
 max_attempts = 7
+attempt = 1
 
+print("正解の数字を作成しました。")
 print("回答できる回数は", max_attempts, "回までです。")
 
-for attempt in range(1, max_attempts + 1):
-    guess = int(input(str(attempt) + "回目の回答："))
+while attempt <= max_attempts:
+    guess_text = input(str(attempt) + "回目の回答：")
+
+    if not guess_text.isdigit():
+        print("数字を入力してください。")
+        continue
+
+    guess = int(guess_text)
+
+    if guess < 100 or guess > 999:
+        print("3桁の数字を入力してください。")
+        continue
 
     print("あなたの回答は", guess, "です。")
 
@@ -26,3 +38,5 @@ for attempt in range(1, max_attempts + 1):
         else:
             print("ゲームオーバーです。")
             print("正解は", answer, "でした。")
+
+        attempt += 1
